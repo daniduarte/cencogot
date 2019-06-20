@@ -1,5 +1,31 @@
 <h2 class="grid__title">Houses</h2>
 
-<div class="col-sm-4" *ngFor="let house of houses">
-  <app-house [house]="house"></app-house>
+<div class="col-sm-4" *ngFor="let house of houses" >
+  <app-house [house]="house" (click)="selectHouse(house)"></app-house>
 </div>
+
+<div *ngIf="houseSelected" class="details">
+  <span class="close" (click)="unselectHouse()">&times;</span>
+  <h2 class="details__title">House details</h2>
+  <div class="details__content">
+    <p>
+      Name:
+      <span>{{houseSelected.name}}</span>
+    </p>
+
+    <p>
+      Region:
+      <span>{{houseSelected.region}}</span>
+    </p>
+    <p>
+      Words:
+      <span>{{houseSelected.words}}</span>
+    </p>
+    <p>
+      currentLord:
+      <span>{{houseSelected.currentLord}}</span>
+    </p>
+  </div>
+</div>
+
+<div *ngIf="houseSelected" class="backdrop"></div>

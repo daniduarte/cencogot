@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule }    from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HouseComponent } from './house/house.component';
@@ -13,7 +14,7 @@ import { CharacterComponent } from './character/character.component';
     HouseComponent,
     HouseListComponent,
     CharacterListComponent,
-    CharacterComponent
+    CharacterComponent,
   ],
   imports: [
     BrowserModule

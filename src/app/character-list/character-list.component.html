@@ -1,5 +1,65 @@
 <h2 class="grid__title">Characters</h2>
 
 <div class="col-sm-4" *ngFor="let character of characters">
-  <app-character [character]="character"></app-character>
+  <app-character [character]="character" (click)="selectCharacter(character)"></app-character>
 </div>
+
+<div *ngIf="characterSelected" class="details">
+  <span class="close" (click)="unselectCharacter()">&times;</span>
+  <h2 class="details__title">Character details</h2>
+  <div class="details__content">
+    <p>
+      Gender:
+      <span>{{characterSelected.gender}}</span>
+    </p>
+
+    <p>
+      Culture:
+      <span>{{characterSelected.culture}}</span>
+    </p>
+
+    <p>
+      Born:
+      <span>{{characterSelected.born}}</span>
+    </p>
+
+    <p>
+      Died:
+      <span>{{characterSelected.died}}</span>
+    </p>
+
+    <p>
+      Titles:
+      <span>{{characterSelected.titles}}</span>
+    </p>
+
+    <p>
+      Aliases:
+      <span>{{characterSelected.aliases}}</span>
+    </p>
+
+    <p>
+      Father:
+      <span>{{characterSelected.father}}</span>
+    </p>
+
+    <p>
+      Mother:
+      <span>{{characterSelected.mother}}</span>
+    </p>
+
+    <p>
+      Spouse:
+      <span>{{characterSelected.spouse}}</span>
+    </p>
+
+    <p>
+      Allegiances:
+      <span>{{characterSelected.allegiances}}</span>
+    </p>
+    
+  </div>
+</div>
+
+<div *ngIf="characterSelected" class="backdrop"></div>
+

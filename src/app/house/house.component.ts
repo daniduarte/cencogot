@@ -10,11 +10,12 @@ export class HouseComponent implements OnInit {
 
   @Input() house: House;
 
+  
+
   constructor() { }
 
   ngOnInit() {
   }
-
 
 
 }

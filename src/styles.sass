@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'modules/block'
+@import 'modules/grid'
+@import 'modules/details'
+
+body
+  padding: 30px 0 
+  // background: url(src/assets/images/bg.jpg) no-repeat fixed
+  background-size: cover 
+  font-family: 'Cinzel', serif
+  &.modal-open
+    .wrap
+      @extend .blur
+
+.bg
+  position: fixed 
+  z-index: 10
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  background: url(src/assets/images/bg.jpg) no-repeat
+  background-size: cover
+
+.blur
+  filter: blur(10px)  
+
+.z10
+  z-index: 10
+
+.z20
+  z-index: 20  
+
+
+.truncate 
+  // width: 100%
+  display: block
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
