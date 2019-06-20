@@ -8,8 +8,6 @@ import { House } from '../house';
 })
 export class HouseComponent implements OnInit {
 
-  // house : House = new House('qwbdjhb32j', 'Dummy house', 'Valdivia', 'Lorem ipsum dolor sit amet', 'Vico');
-
   @Input() house: House;
 
   constructor() { }
