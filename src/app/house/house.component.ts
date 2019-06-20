@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { House } from '../house';
 
 @Component({
@@ -8,13 +8,15 @@ import { House } from '../house';
 })
 export class HouseComponent implements OnInit {
 
-  house : House = new House('qwbdjhb32j', 'Dummy house', 'Valdivia', 'Lorem ipsum dolor sit amet', 'Vico');
+  // house : House = new House('qwbdjhb32j', 'Dummy house', 'Valdivia', 'Lorem ipsum dolor sit amet', 'Vico');
+
+  @Input() house: House;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  
+
 
 }
