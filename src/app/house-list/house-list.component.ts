@@ -4,9 +4,6 @@ import { House} from '../house';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RestService } from "../rest.service";
-// import {Observable} from "rxjs/Observable";
-
-
 
 
 @Component({
@@ -30,7 +27,6 @@ export class HouseListComponent implements OnInit {
       .subscribe(
         (data) => {
           data.map( (dataItem) => {
-            console.log(dataItem);
             let house = new House('1', dataItem.name, dataItem.region, dataItem.words, dataItem.currentLord);
             this.houses.push(house);
           });
@@ -43,7 +39,6 @@ export class HouseListComponent implements OnInit {
 
   selectHouse (house: House): void  {
     this.houseSelected = house;
-    console.log('houseSelected', this.houseSelected);
   }
 
   unselectHouse () : void {
