@@ -1,0 +1,16 @@
+version: '3'
+services:
+  code:
+    container_name: cencogot_code_env
+    image: node:8.16.0-alpine
+    volumes:
+      - ./code:/code
+      # - ./node_modules:/code/node_modules
+    working_dir: /code
+    environment:
+      NODE_ENV: development
+      NODE_PATH: /code/node_modules
+    ports:
+      - '4200:4200'
+      
+    command: node_modules/@angular/cli/bin/ng serve
