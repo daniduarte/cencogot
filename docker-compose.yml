@@ -13,4 +13,4 @@ services:
     ports:
       - '4200:4200'
       
-    command: node_modules/@angular/cli/bin/ng serve
+    command: node_modules/@angular/cli/bin/ng serve --no-open --host 0.0.0.0
