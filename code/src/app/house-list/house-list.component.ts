@@ -26,7 +26,7 @@ export class HouseListComponent implements OnInit {
      this.restService.getHouses()
       .subscribe(
         (data) => {
-          data.map( (dataItem) => {
+          data.forEach( (dataItem) => {
             let house = new House('1', dataItem.name, dataItem.region, dataItem.words, dataItem.currentLord);
             this.houses.push(house);
           });

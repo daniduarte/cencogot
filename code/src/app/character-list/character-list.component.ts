@@ -25,8 +25,7 @@ export class CharacterListComponent implements OnInit {
      this.restService.getCharacters()
       .subscribe(
         (data) => {
-          data.map( (dataItem) => {
-            console.log(dataItem);
+          data.forEach( (dataItem) => {
             let character = new Character('1', dataItem.gender, dataItem.culture, dataItem.born, dataItem.died, dataItem.titles, dataItem.aliases, dataItem.father, dataItem.mother, dataItem.spouse, dataItem.allegiances);
             this.characters.push(character);
           });
