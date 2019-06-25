@@ -8,7 +8,8 @@ import { HouseListComponent } from './house-list/house-list.component';
 import { CharacterListComponent } from './character-list/character-list.component';
 import { CharacterComponent } from './character/character.component';
 import { RestService } from './rest.service';
-import { HouseFilterPipe} from './house-list/house-filter.pipe'
+import { HouseFilterPipe } from './house-list/house-filter.pipe'
+import { CharacterFilterPipe } from './character-list/character-filter.pipe'
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     HouseListComponent,
     CharacterListComponent,
     CharacterComponent,
-    HouseFilterPipe
+    HouseFilterPipe,
+    CharacterFilterPipe
   ],
   imports: [
     BrowserModule,
