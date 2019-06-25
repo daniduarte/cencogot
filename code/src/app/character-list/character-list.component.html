@@ -11,52 +11,52 @@
   <span class="close" (click)="unselectCharacter()">&times;</span>
   <h2 class="details__title">Character details</h2>
   <div class="details__content">
-    <p>
+    <p *ngIf="characterSelected.gender">
       Gender:
       <span>{{characterSelected.gender}}</span>
     </p>
 
-    <p>
+    <p *ngIf="characterSelected.culture">
       Culture:
       <span>{{characterSelected.culture}}</span>
     </p>
 
-    <p>
+    <p *ngIf="characterSelected.born">
       Born:
       <span>{{characterSelected.born}}</span>
     </p>
 
-    <p>
+    <p *ngIf="characterSelected.died">
       Died:
       <span>{{characterSelected.died}}</span>
     </p>
 
-    <p>
+    <p *ngIf="characterSelected.titles">
       Titles:
       <span>{{characterSelected.titles}}</span>
     </p>
 
-    <p>
+    <p *ngIf="characterSelected.aliases">
       Aliases:
       <span>{{characterSelected.aliases}}</span>
     </p>
 
-    <p>
+    <p *ngIf="characterSelected.father">
       Father:
       <span>{{characterSelected.father}}</span>
     </p>
 
-    <p>
+    <p *ngIf="characterSelected.mother">
       Mother:
       <span>{{characterSelected.mother}}</span>
     </p>
 
-    <p>
+    <p *ngIf="characterSelected.spouse">
       Spouse:
       <span>{{characterSelected.spouse}}</span>
     </p>
 
-    <p>
+    <p *ngIf="characterSelected.allegiances">
       Allegiances:
       <span class="button">View house details</span>
     </p>
