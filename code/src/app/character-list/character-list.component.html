@@ -1,6 +1,9 @@
 <h2 class="grid__title">Characters</h2>
 
-<div class="col-sm-4" *ngFor="let character of characters">
+<input type="text" placeholder="Search character by aliases" [(ngModel)]="searchTerm" class="grid__search">
+
+
+<div class="col-sm-4" *ngFor="let character of characters | characterFilter: searchTerm">
   <app-character [character]="character" (click)="selectCharacter(character)"></app-character>
 </div>
 
