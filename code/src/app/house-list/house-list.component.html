@@ -1,6 +1,8 @@
 <h2 class="grid__title">Houses</h2>
 
-<div class="col-sm-4" *ngFor="let house of houses" >
+<input type="text" placeholder="Search house by name" [(ngModel)]="searchTerm" class="grid__search">
+
+<div class="col-sm-4" *ngFor="let house of houses | houseFilter: searchTerm">
   <app-house [house]="house" (click)="selectHouse(house)"></app-house>
 </div>
 
