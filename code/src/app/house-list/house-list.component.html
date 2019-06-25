@@ -23,9 +23,10 @@
       Words:
       <span>{{houseSelected.words}}</span>
     </p>
-    <p>
-      currentLord:
-      <span>{{houseSelected.currentLord}}</span>
+
+    <p *ngIf="houseSelected.currentLord">
+      Current lord:
+      <span class="button">View lord details</span>
     </p>
   </div>
 </div>
