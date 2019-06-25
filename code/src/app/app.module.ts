@@ -8,7 +8,9 @@ import { HouseListComponent } from './house-list/house-list.component';
 import { CharacterListComponent } from './character-list/character-list.component';
 import { CharacterComponent } from './character/character.component';
 import { RestService } from './rest.service';
-
+import { HouseFilterPipe } from './house-list/house-filter.pipe'
+import { CharacterFilterPipe } from './character-list/character-filter.pipe'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,10 +19,13 @@ import { RestService } from './rest.service';
     HouseListComponent,
     CharacterListComponent,
     CharacterComponent,
+    HouseFilterPipe,
+    CharacterFilterPipe
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

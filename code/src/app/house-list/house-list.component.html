@@ -1,6 +1,8 @@
 <h2 class="grid__title">Houses</h2>
 
-<div class="col-sm-4" *ngFor="let house of houses" >
+<input type="text" placeholder="Search house by name" [(ngModel)]="searchTerm" class="grid__search">
+
+<div class="col-sm-4" *ngFor="let house of houses | houseFilter: searchTerm">
   <app-house [house]="house" (click)="selectHouse(house)"></app-house>
 </div>
 
@@ -8,23 +10,22 @@
   <span class="close" (click)="unselectHouse()">&times;</span>
   <h2 class="details__title">House details</h2>
   <div class="details__content">
-    <p>
+    <p *ngIf="houseSelected.name">
       Name:
       <span>{{houseSelected.name}}</span>
     </p>
 
-    <p>
+    <p *ngIf="houseSelected.region">
       Region:
       <span>{{houseSelected.region}}</span>
     </p>
-    <p>
+
+    <p *ngIf="houseSelected.words">
       Words:
       <span>{{houseSelected.words}}</span>
     </p>
-    <p>
-      currentLord:
-      <span>{{houseSelected.currentLord}}</span>
-    </p>
+
+    
   </div>
 </div>
 
