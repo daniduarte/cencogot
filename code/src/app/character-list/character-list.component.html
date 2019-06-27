@@ -1,12 +1,32 @@
 <h2 class="grid__title">Characters</h2>
 
-<input type="text" placeholder="Search character by aliases" [(ngModel)]="searchTerm" class="grid__search">
+<input type="text" placeholder="Search in page {{ currentPage }}" [(ngModel)]="searchTerm" class="grid__search">
 
-
-<div class="col-sm-4" *ngFor="let character of characters | characterFilter: searchTerm">
-  <app-character [character]="character" (click)="selectCharacter(character)"></app-character>
+<div *ngIf="!loading" class="row-fluid">
+  <div class="col-sm-4" *ngFor="let character of characters | characterFilter: searchTerm">
+    <app-character [character]="character" (click)="selectCharacter(character)"></app-character>
+  </div>
 </div>
 
+<div *ngIf="loading" class="row-fluid">
+  <div class="col-sm-12">
+    <h4 class="text-center">Loading...</h4>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="col-sm-4 col-sm-offset-8">  
+    <div class="s20"></div>
+    <div class="pull-right">
+      Page 
+      <select (change)="getCharacters($event.target.value)">
+        <option *ngFor="let page of getNumberAsArray(lastPage); let i = index;" value="{{ i + 1 }}">{{ i + 1 }}</option>
+      </select>
+      of 
+      {{ lastPage }}
+    </div>
+  </div>
+</div>
 <div *ngIf="characterSelected" class="details">
   <span class="close" (click)="unselectCharacter()">&times;</span>
   <h2 class="details__title">Character details</h2>
@@ -55,7 +75,6 @@
       Spouse:
       <span>{{characterSelected.spouse}}</span>
     </p>
-
     
   </div>
 </div>
