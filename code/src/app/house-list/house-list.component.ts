@@ -18,6 +18,7 @@ export class HouseListComponent implements OnInit {
   currentPage: number = 1;
   lastPage: number = 1;
   searchTerm : string = null;
+  loading : boolean = false;
 
   constructor(private restService: RestService) { }
 
@@ -30,6 +31,7 @@ export class HouseListComponent implements OnInit {
   }
 
   getHouses (page : number) : void {
+    this.loading = true;
     this.searchTerm = null;
     this.currentPage = page;
     this.houses = [];
@@ -46,9 +48,12 @@ export class HouseListComponent implements OnInit {
             let house = new House('1', dataItem.name, dataItem.region, dataItem.words, dataItem.currentLord);
             this.houses.push(house);
           });
+
+          this.loading = false;
         },
         (error) => {
           console.error(error);
+          this.loading = false;
         }
       );
   }

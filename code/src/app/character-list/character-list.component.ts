@@ -17,6 +17,7 @@ export class CharacterListComponent implements OnInit {
   currentPage: number = 1;
   lastPage: number = 1;
   searchTerm : string = null;
+  loading : boolean = false;
   
   constructor(private restService: RestService) { }
 
@@ -29,6 +30,7 @@ export class CharacterListComponent implements OnInit {
   }
 
   getCharacters (page : number) : void {
+    this.loading = true;
     this.searchTerm = null;
     this.currentPage = page;
     this.characters = [];
@@ -45,9 +47,12 @@ export class CharacterListComponent implements OnInit {
             let character = new Character('1', dataItem.gender, dataItem.culture, dataItem.born, dataItem.died, dataItem.titles, dataItem.aliases, dataItem.father, dataItem.mother, dataItem.spouse, dataItem.allegiances);
             this.characters.push(character);
           });
+
+          this.loading = false;
         },
         (error) => {
           console.error(error);
+          this.loading = false;
         }
       );
   }

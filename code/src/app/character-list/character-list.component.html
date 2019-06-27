@@ -2,9 +2,16 @@
 
 <input type="text" placeholder="Search in page {{ currentPage }}" [(ngModel)]="searchTerm" class="grid__search">
 
+<div *ngIf="!loading" class="row-fluid">
+  <div class="col-sm-4" *ngFor="let character of characters | characterFilter: searchTerm">
+    <app-character [character]="character" (click)="selectCharacter(character)"></app-character>
+  </div>
+</div>
 
-<div class="col-sm-4" *ngFor="let character of characters | characterFilter: searchTerm">
-  <app-character [character]="character" (click)="selectCharacter(character)"></app-character>
+<div *ngIf="loading" class="row-fluid">
+  <div class="col-sm-12">
+    <h4 class="text-center">Loading...</h4>
+  </div>
 </div>
 
 <div class="row-fluid">
