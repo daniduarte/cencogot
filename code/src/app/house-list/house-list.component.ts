@@ -15,18 +15,34 @@ export class HouseListComponent implements OnInit {
 
   houses : House[] = [];
   houseSelected: House;
+  currentPage: number = 1;
+  lastPage: number = 1;
+  searchTerm : string = null;
 
   constructor(private restService: RestService) { }
 
   ngOnInit() {
-    this.getHouses();
+    this.getHouses(this.currentPage);
   }
 
-  getHouses () : void {
-     this.restService.getHouses()
+  getNumberAsArray (n : number) : any[] {
+    return Array(n);
+  }
+
+  getHouses (page : number) : void {
+    this.searchTerm = null;
+    this.currentPage = page;
+    this.houses = [];
+     this.restService.getHouses(page)
       .subscribe(
         (data) => {
-          data.forEach( (dataItem) => {
+
+          let links : string[] = data.headers.get('link').split(',');
+          links = links[links.length - 1].match(/page=([0-9]+)/g);
+          links = links.toString().split('=');
+          this.lastPage = parseInt(links[1]);
+
+          data.body.forEach( (dataItem) => {
             let house = new House('1', dataItem.name, dataItem.region, dataItem.words, dataItem.currentLord);
             this.houses.push(house);
           });
