@@ -6,15 +6,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class RestService {
 
-  baseUrl:string = "https://anapioficeandfire.com/api";
+  baseUrl: string = "https://anapioficeandfire.com/api";
+  pageSize: number = 9;
 
   constructor(private http:HttpClient) { }
 
-  public getHouses () {
-    return this.http.get<any[]>(this.baseUrl + '/houses');
+  public getHouses (currentPage: number) {
+    return this.http.get<any[]>(this.baseUrl + '/houses' + '?page=' + currentPage + '&pageSize=' + this.pageSize, { observe: 'response' });
   }
 
-  public getCharacters () {
-    return this.http.get<any[]>(this.baseUrl + '/characters');
+  public getCharacters (currentPage: number) {
+    return this.http.get<any[]>(this.baseUrl + '/characters' + '?page='+ currentPage +'&pageSize=' + this.pageSize, { observe: 'response' });
   }
 }
